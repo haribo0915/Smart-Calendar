@@ -18,7 +18,7 @@ def index(request):
     '''
     Index view
     '''
-    messages.add_message(request, messages.INFO, 'Hello world.')
+    #messages.add_message(request, messages.INFO, 'Hello world.')
     return render(request, 'index.html', locals())
 
 def groups(request):
