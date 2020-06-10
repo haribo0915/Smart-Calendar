@@ -6,7 +6,7 @@
 
 <div class="container">
   {% block content %}
-    <h1>Smart Calender</h1>
+    <h2>Smart Calender</h2>
     {% if request.user.is_authenticated %}
       <p>使用者: {{request.user}}</p>
       <div ng-app="GetdataApp">
@@ -25,6 +25,8 @@
         {% csrf_token %}
         <label for="invite_user">Invite User: </label>
         <input type="text" name="invite_user" />
+        <label for="invite_user">Time Interval: </label>
+        <input type="text" name="time_interval" />
         <input type="submit" />
       </form>
       <!-- <p><a href="{% url 'calendar' %}">my schedule</a></p>
