@@ -2,20 +2,34 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	
 }
 
 .h1, h1{
 	font-size: 60px;
+	color:  white !important;
 	text-shadow: 3px 4px #0392F7;
 }
 
 body{
-	background-color: #303030 !important;
+	background-color: 	#303030 !important;
 }
 
+th{
+	color:  white;
+}
 
 mwl-calendar .cal-month-box{
+	background-color: white;
+}
+
+mwl-calendar .cal-week-box{
+	background-color: white;
+}
+
+mwl-calendar .cal-year-box{
+	background-color: white;
+}
+mwl-calendar .cal-day-box{
 	background-color: white;
 }
 
@@ -57,7 +71,7 @@ p {
 }
 
 button{
-	width: 80px;
+	width: 150px;
 	height: 30px;
 	color: #303030 !important;
 }
