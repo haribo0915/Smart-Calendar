@@ -2,7 +2,25 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
 }
+
+.h1, h1{
+	font-size: 60px;
+	text-shadow: 3px 4px #0392F7;
+}
+
+body{
+	background-color: #303030 !important;
+}
+
+
+
+.main-panel{
+	height: 100%;
+	color: white;
+}
+
 
 .nav{
 	text-align: center;
@@ -11,6 +29,7 @@
 .container{
 	text-align: center;
 	margin-top: 30px;
+	
 }
 
 form{
@@ -30,3 +49,27 @@ ul{
 p {
     /* font-size: 70px; */
 }
+
+button{
+	width: 80px;
+	height: 30px;
+	color: #303030 !important;
+}
+
+.ng-binding{
+	color: #303030;
+}
+
+a.ng-binding{
+	color: white;
+}
+
+input:focus, input:enabled{
+	color: #303030;
+}
+
+li.a{
+	color: #303030!important;
+}
+
+.ng-binding

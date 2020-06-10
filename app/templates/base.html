@@ -10,35 +10,37 @@
 </head>
 
 <body>
-    <ul class="nav nav-tabs">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        {% if request.user.is_authenticated %}
-        <li><a href="{% url 'calendar' %}">Calendar</a></li>
-        <li><a href="{% url 'groups' %}">Groups</a></li>
-        {% comment %} <li><a href="#">Notifications</a></li>
-        <li><a href="#">Settings</a></li> {% endcomment %}
-        <li><a href="{% url 'logout' %}">Log out</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Log in</a></li>
-        <li><a href="{% url 'signup' %}">Register</a></li>
-        {% endif %}
-        <li><a href="{% url 'event' %}">api/Events</a></li>
-        <li><a href="{% url 'query_group' %}">api/query_group</a></li>
-    </ul>
-
-
-    <div class="container">
-        {% comment %} This is for debugging {% endcomment %} {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %} {{ message }}
-                </li>
-                {% endfor %}
-        </ul>
-        {% endif %} {% comment %} End {% endcomment %} {% block content %}
-        <p>I am base.html content</p>
-        {% endblock %}
+    <div class="main-panel">
+      <ul class="nav nav-tabs">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'calendar' %}">Calendar</a></li>
+          <li><a href="{% url 'groups' %}">Groups</a></li>
+          {% comment %} <li><a href="#">Notifications</a></li>
+          <li><a href="#">Settings</a></li> {% endcomment %}
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Log in</a></li>
+          <li><a href="{% url 'signup' %}">Register</a></li>
+          {% endif %}
+          <li><a href="{% url 'event' %}">api/Events</a></li>
+          <li><a href="{% url 'query_group' %}">api/query_group</a></li>
+      </ul>
+  
+  
+      <div class="container">
+          {% comment %} This is for debugging {% endcomment %} {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %} {{ message }}
+                  </li>
+                  {% endfor %}
+          </ul>
+          {% endif %} {% comment %} End {% endcomment %} {% block content %}
+          <p>I am base.html content</p>
+          {% endblock %}
+      </div>
     </div>
   <script src="{% static "bootstrap/dist/js/bootstrap.js" %}"></script>
   <script src="https://unpkg.com/angular@1.6.6/angular.js"></script>
