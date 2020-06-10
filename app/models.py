@@ -43,6 +43,7 @@ class Group(models.Model):
 
     group_id = models.PositiveIntegerField()
     starter_id = models.PositiveIntegerField()
+    time_interval = models.PositiveIntegerField(default= 2)
     starter_name = models.CharField(max_length=50)
     target_id = models.PositiveIntegerField()
     target_name = models.CharField(max_length=50)
@@ -65,6 +66,7 @@ class Group(models.Model):
             "is_success": self.is_success,
             "last_modify_date": self.last_modify_date.timestamp(),
             "created": self.created.timestamp(),
+            "time_interval": self.time_interval
         }
     class Meta:
         db_table = 'groups'

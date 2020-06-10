@@ -34,6 +34,7 @@ def invite(request):
         messages.add_message(request, messages.ERROR, 'You are no authenticated!')
     
     target_user = request.POST.get('invite_user', '')
+    time_interval = request.POST.get('time_interval', '')
     
     if target_user == '':
         messages.add_message(request, messages.WARNING, 'no invite target')
@@ -41,7 +42,10 @@ def invite(request):
 
     try:
         target_user_instance = User.objects.get(username=target_user)
-        r1=Group.objects.create(group_id=request.user.id,starter_id=request.user.id,starter_name=request.user.username,target_id=target_user_instance.id,target_name=target_user,is_pending=True,is_success=False )
+        r1=Group.objects.create(group_id=request.user.id,starter_id=request.user.id
+            ,starter_name=request.user.username,target_id=target_user_instance.id
+            ,target_name=target_user,is_pending=True,is_success=False
+            , time_interval=int(time_interval) )
         r1.save()
         messages.add_message(request, messages.INFO, 'Invitation was sent')
         
@@ -123,7 +127,8 @@ def accept_group(request, pid):
         return HttpResponse(json.dumps(res_data), content_type="application/json")
 
     # Change the state of group
-    freetime=group_result_calculate(group_instance.starter_id,group_instance.target_id)
+    freetime=group_result_calculate(group_instance.starter_id,group_instance.target_id
+        , group_instance.time_interval)
     if(freetime  ==[]):
         res_data['ok'] = True
         res_data['message']='You two have no same free time'
@@ -220,7 +225,7 @@ def group_result(request,gid):
         else:
             #TODO: get starter's and target's events from db
             #TODO: compute the two user's same free time
-            freetime=group_result_calculate(g1.starter_id,g1.target_id)
+            freetime=group_result_calculate(g1.starter_id,g1.target_id, g1.time_interval)
             
             if(freetime == []):
                 res_data['ok']=False
@@ -382,7 +387,7 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-def group_result_calculate(u1_id,u2_id):
+def group_result_calculate(u1_id, u2_id, time_interval):
     import datetime
     u1_events=Event.objects.filter(owner_user_id=u1_id,
                                     starttime__lte=(datetime.datetime.now()+datetime.timedelta(days=7)),
@@ -392,7 +397,7 @@ def group_result_calculate(u1_id,u2_id):
                                     starttime__lte=(datetime.datetime.now()+datetime.timedelta(days=7)),
                                     endtime__gte=datetime.datetime.now())
             
-    t =datetime.timedelta(hours=2)
+    t =datetime.timedelta(hours=time_interval)
     basetime=datetime.datetime.now(datetime.timezone.utc)
     nowtime=basetime
     freetime=[]
