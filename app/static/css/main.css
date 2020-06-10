@@ -15,7 +15,13 @@ body{
 }
 
 
+mwl-calendar .cal-month-box{
+	background-color: white;
+}
 
+.calendar-title{
+	color:  white !important;
+}
 .main-panel{
 	height: 100%;
 	color: white;

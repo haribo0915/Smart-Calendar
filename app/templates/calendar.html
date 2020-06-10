@@ -164,7 +164,7 @@
         id="signout_button">Sign Out
       </button>
     <!-- <h2 class="text-center"><input ng-model="vm.calendarTitle"></h2> -->
-    <h2 class="text-center">{[{vm.calendarTitle}]}</h2>
+    <h2 class="text-center calendar-title">{[{vm.calendarTitle}]}</h2>
   
 
     <div class="row calendar">
@@ -212,21 +212,23 @@
   
     </div>
     <br>
-    <mwl-calendar
-      events="vm.events"
-      view="vm.calendarView"
-      view-title="vm.calendarTitle"
-      view-date="vm.viewDate"
-      on-event-click="vm.eventClicked(calendarEvent)"
-      on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-      cell-is-open="vm.cellIsOpen"
-      day-view-start="00:00"
-      day-view-end="23:59"
-      day-view-split="30"
-      cell-modifier="vm.modifyCell(calendarCell)"
-      cell-auto-open-disabled="true"
-      on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
-    </mwl-calendar>
+    <div class="calendar">
+      <mwl-calendar
+        events="vm.events"
+        view="vm.calendarView"
+        view-title="vm.calendarTitle"
+        view-date="vm.viewDate"
+        on-event-click="vm.eventClicked(calendarEvent)"
+        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+        cell-is-open="vm.cellIsOpen"
+        day-view-start="00:00"
+        day-view-end="23:59"
+        day-view-split="30"
+        cell-modifier="vm.modifyCell(calendarCell)"
+        cell-auto-open-disabled="true"
+        on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+      </mwl-calendar>
+    </div>
   
     <br><br><br>
   
